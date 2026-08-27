@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Apple ID Cards</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body> 
+
+    <div class="toolbar">
+        <h2>Create Apple ID Cards</h2>
+        
+        <div class="excel-section">
+            <p class="excel-title">Automatic Filling from Excel File (Supports Unlimited Accounts)</p>
+            <p class="excel-subtitle">(Column Order: Email, Password, Birth Date, Q1, Q2, Q3)</p>
+            <input type="file" id="excelUpload" accept=".xlsx, .xls">
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="hasHeaders" checked> File has header row (will be ignored)</label>
+            </div>
+        </div>
+
+        <p>
+        <b>Manual Editing Method:</b> Click on any empty cell and type the data.<br>
+        </p>
+        <button class="btn" id="printBtn">Print Cards Now</button>
+    </div>
+
+    <div id="pages-container"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
