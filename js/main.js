@@ -34,22 +34,22 @@ function getBackCardTemplate(rowData = []) {
         <div class="card card-back">
             <table class="data-table">
                 <tr>
-                    <td style="width: 33%;"><strong>البريد:</strong></td>
+                    <td style="width: 33%;"><strong>Email:</strong></td>
                     <td><div class="editable-value" contenteditable="true" spellcheck="false" placeholder="example@email.com">${email}</div></td>
                 </tr>
                 <tr>
-                    <td><strong>كلمة السر:</strong></td>
+                    <td><strong>Password:</strong></td>
                     <td><div class="scratch-editable" contenteditable="true" spellcheck="false" placeholder="Xx123456">${pass}</div></td>
                 </tr>
                 <tr>
-                    <td><strong>تاريخ الميلاد:</strong></td>
+                    <td><strong>Birth Date:</strong></td>
                     <td><div class="scratch-editable" contenteditable="true" spellcheck="false" placeholder="xx/xx/202x">${dob}</div></td>
                 </tr>
                 <tr>
                     <td colspan="2" style="padding-top:1px; border-top: 0.5pt solid #949ba9;"></td>
                 </tr>
                 <tr>
-                    <td><strong>اسئلة الامان:</strong></td>
+                    <td class="sqQ" colspan="2";"><strong>Security questions(اسئلة الامان):</strong></td>
                 </tr>
                 <tr>
                     <td class="q-title" colspan="2">What is the first name of your best friend in high school?</td>

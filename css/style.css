@@ -221,14 +221,16 @@ input[type="file"] {
     padding: 0.8px 0;
     vertical-align: middle;
 }
-
+.sqQ {
+    direction: ltr;
+    font-family: Arial, sans-serif;
+}
 .q-title {
     font-size: 7pt;
     color: #4b5563;
     direction: ltr;
-    text-align: right;
+    text-align: left;
     font-family: Arial, sans-serif;
-    direction: ltr;
 }
 
 /* editable cells */
