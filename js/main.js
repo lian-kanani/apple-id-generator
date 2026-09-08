@@ -52,27 +52,24 @@ function getBackCardTemplate(rowData = []) {
                     <td><strong>اسئلة الامان:</strong></td>
                 </tr>
                 <tr>
-                    <td class="q-title" colspan="2">Q1</td>
+                    <td class="q-title" colspan="2">What is the first name of your best friend in high school?</td>
                 </tr>
                 <tr>
                     <td colspan="2"><div class="scratch-editable" contenteditable="true" spellcheck="false" placeholder="Q1">${q1}</div></td>
                 </tr>
                 <tr>
-                    <td class="q-title" colspan="2">Q2</td>
+                    <td class="q-title" colspan="2">What is your dream job ?</td>
                 </tr>
                 <tr>
                     <td colspan="2"><div class="scratch-editable" contenteditable="true" spellcheck="false" placeholder="Q2">${q2}</div></td>
                 </tr>
                 <tr>
-                    <td class="q-title" colspan="2">Q3</td>
+                    <td class="q-title" colspan="2">In what city did your parents meet ?</td>
                 </tr>
                 <tr>
                     <td colspan="2"><div class="scratch-editable" contenteditable="true" spellcheck="false" placeholder="Q3">${q3}</div></td>
                 </tr>
             </table>
-            <div class="disclaimer-back">
-                * تأكد من سلامة طبقات الكشط قبل الشراء. للدعم الفني والتواصل عبر واتساب: 09xxxxxxxx
-            </div>
         </div>
     `;
 }
