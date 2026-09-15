@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Apple ID Cards</title>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    
+
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body> 
+<body>
 
     <div class="toolbar">
         <h2>Create Apple ID Cards</h2>
-        
+
+        <div class="serial-section">
+            <label for="startSerial"><strong>Starting Serial Number:</strong></label>
+            <input type="number" id="startSerial" value="1" min="0" step="1" inputmode="numeric">
+            <small>مثال: اكتب 8 وستصبح البطاقات 8، 9، 10 ...</small>
+        </div>
+
         <div class="excel-section">
             <p class="excel-title">Automatic Filling from Excel File (Supports Unlimited Accounts)</p>
             <p class="excel-subtitle">(Column Order: Email, Password, Birth Date, Q1, Q2, Q3)</p>
@@ -24,7 +30,8 @@
         </div>
 
         <p>
-        <b>Manual Editing Method:</b> Click on any empty cell and type the data.<br>
+            <b>Manual Editing Method:</b> Click on any empty cell and type the data.<br>
+            <b>Serial number:</b> You can also edit the number directly on each front card.
         </p>
         <button class="btn" id="printBtn">Print Cards Now</button>
     </div>
