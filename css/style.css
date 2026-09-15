@@ -472,7 +472,7 @@ input[type="file"] {
 
   .editable-value,
   .scratch-editable {
-    border: none !important;
+    border: #000 !important;
     background: transparent !important;
     box-shadow: none !important;
   }
@@ -480,13 +480,7 @@ input[type="file"] {
     background: transparent !important;
   }
   .scratch-editable {
-    background: repeating-linear-gradient(
-      45deg,
-      #e4e7eb,
-      #e4e7eb 3px,
-      #f0f2f4 3px,
-      #f0f2f4 6px
-    ) !important;
+    background:transparent !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
