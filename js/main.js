@@ -10,7 +10,7 @@ const appleLogoSVG = `
 // Fixed template for the front side of the card.
 // The serial number is contenteditable so each card can be adjusted manually after rendering.
 function getFrontCardTemplate(serialNumber) {
-    return `
+  return `
         <div class="card card-front">
             <div class="front-decor front-decor-top"></div>
             <div class="front-decor front-decor-bottom"></div>
@@ -22,10 +22,10 @@ function getFrontCardTemplate(serialNumber) {
                 </div>
 
                 <div class="front-main-copy">
-                    <p class="subtitle">بطاقة حساب جاهز ومفعّل</p>
+                    <p class="subtitle"><strong>بطاقة حساب جاهز ومفعّل</strong></p>
                     <ul class="features-list">
-                        <li>✔ يتضمن كلمة السر وتاريخ الميلاد وأسئلة الأمان</li>
-                        <li>✔ لا يحتاج إلى ربط بطاقة إئتمانية</li>
+                        <li><strong>✔ يتضمن كلمة السر وتاريخ الميلاد وأسئلة الأمان</strong></li>
+                        <li><strong>✔ لا يحتاج إلى ربط بطاقة إئتمانية</strong></li>
                     </ul>
                     <div class="warning-box">
                         <span class="warning-title">⚠️ ملاحظة مهمة جداً:</span>
@@ -47,14 +47,14 @@ function getFrontCardTemplate(serialNumber) {
 
 // Function to generate the back side of the card with editable fields.
 function getBackCardTemplate(rowData = []) {
-    const email = rowData[0] || '';
-    const pass = rowData[1] || '';
-    const dob = rowData[2] || '';
-    const q1 = rowData[3] || '';
-    const q2 = rowData[4] || '';
-    const q3 = rowData[5] || '';
+  const email = rowData[0] || "";
+  const pass = rowData[1] || "";
+  const dob = rowData[2] || "";
+  const q1 = rowData[3] || "";
+  const q2 = rowData[4] || "";
+  const q3 = rowData[5] || "";
 
-    return `
+  return `
         <div class="card card-back">
             <table class="data-table">
                 <tr>
@@ -99,82 +99,86 @@ function getBackCardTemplate(rowData = []) {
 }
 
 function getStartSerial() {
-    const input = document.getElementById('startSerial');
-    const parsed = Number.parseInt(input?.value, 10);
-    return Number.isFinite(parsed) && parsed >= 0 ? parsed : 1;
+  const input = document.getElementById("startSerial");
+  const parsed = Number.parseInt(input?.value, 10);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : 1;
 }
 
 // Function to render pages based on the data rows.
 function renderPages(dataRows = []) {
-    const container = document.getElementById('pages-container');
-    container.innerHTML = '';
-    startSerial = getStartSerial();
+  const container = document.getElementById("pages-container");
+  container.innerHTML = "";
+  startSerial = getStartSerial();
 
-    const totalItems = Math.max(8, dataRows.length);
-    const totalPages = Math.ceil(totalItems / 8);
+  const totalItems = Math.max(8, dataRows.length);
+  const totalPages = Math.ceil(totalItems / 8);
 
-    for (let p = 0; p < totalPages; p++) {
-        let frontPageHTML = `<div class="a4-page"><div class="page-title-banner">Page ${p*2 + 1}: Front Sides - Sheet ${p+1}</div>`;
-        for (let i = 0; i < 8; i++) {
-            const serialNumber = startSerial + (p * 8) + i;
-            frontPageHTML += getFrontCardTemplate(serialNumber);
-        }
-        frontPageHTML += `</div>`;
-        container.innerHTML += frontPageHTML;
-
-        let backPageHTML = `<div class="a4-page"><div class="page-title-banner">Page ${p*2 + 2}: Back Sides - Sheet ${p+1}</div>`;
-        for (let i = 0; i < 8; i++) {
-            const dataIndex = (p * 8) + i;
-            const rowData = dataRows[dataIndex] || [];
-            backPageHTML += getBackCardTemplate(rowData);
-        }
-        backPageHTML += `</div>`;
-        container.innerHTML += backPageHTML;
+  for (let p = 0; p < totalPages; p++) {
+    let frontPageHTML = `<div class="a4-page"><div class="page-title-banner">Page ${p * 2 + 1}: Front Sides - Sheet ${p + 1}</div>`;
+    for (let i = 0; i < 8; i++) {
+      const serialNumber = startSerial + p * 8 + i;
+      frontPageHTML += getFrontCardTemplate(serialNumber);
     }
+    frontPageHTML += `</div>`;
+    container.innerHTML += frontPageHTML;
+
+    let backPageHTML = `<div class="a4-page"><div class="page-title-banner">Page ${p * 2 + 2}: Back Sides - Sheet ${p + 1}</div>`;
+    for (let i = 0; i < 8; i++) {
+      const dataIndex = p * 8 + i;
+      const rowData = dataRows[dataIndex] || [];
+      backPageHTML += getBackCardTemplate(rowData);
+    }
+    backPageHTML += `</div>`;
+    container.innerHTML += backPageHTML;
+  }
 }
 
-window.onload = function() {
-    const serialInput = document.getElementById('startSerial');
-    serialInput.addEventListener('change', () => renderPages(lastDataRows));
-    serialInput.addEventListener('input', () => {
-        // Re-render only after a valid whole number is entered to avoid flicker while typing.
-        if (/^\d+$/.test(serialInput.value)) {
-            renderPages(lastDataRows);
-        }
-    });
-    renderPages([]);
+window.onload = function () {
+  const serialInput = document.getElementById("startSerial");
+  serialInput.addEventListener("change", () => renderPages(lastDataRows));
+  serialInput.addEventListener("input", () => {
+    // Re-render only after a valid whole number is entered to avoid flicker while typing.
+    if (/^\d+$/.test(serialInput.value)) {
+      renderPages(lastDataRows);
+    }
+  });
+  renderPages([]);
 };
 
 let lastDataRows = [];
 
-document.getElementById('printBtn').addEventListener('click', function() {
-    window.print();
+document.getElementById("printBtn").addEventListener("click", function () {
+  window.print();
 });
 
-document.getElementById('excelUpload').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
+document.getElementById("excelUpload").addEventListener("change", function (e) {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, {type: 'array'});
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const data = new Uint8Array(e.target.result);
+    const workbook = XLSX.read(data, { type: "array" });
 
-        const firstSheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[firstSheetName];
-        const json = XLSX.utils.sheet_to_json(worksheet, {header: 1, defval: ""});
+    const firstSheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[firstSheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: "" });
 
-        const hasHeaders = document.getElementById('hasHeaders').checked;
-        let dataRows = hasHeaders ? json.slice(1) : json;
-        dataRows = dataRows.filter(row => row.some(cell => cell !== ""));
-        lastDataRows = dataRows;
+    const hasHeaders = document.getElementById("hasHeaders").checked;
+    let dataRows = hasHeaders ? json.slice(1) : json;
+    dataRows = dataRows.filter((row) => row.some((cell) => cell !== ""));
+    lastDataRows = dataRows;
 
-        if (dataRows.length > 0) {
-            renderPages(dataRows);
-            alert("✅ Imported " + dataRows.length + " accounts and pages have been prepared successfully!");
-        } else {
-            alert("⚠️ The file is empty or does not contain any data.");
-        }
-    };
-    reader.readAsArrayBuffer(file);
+    if (dataRows.length > 0) {
+      renderPages(dataRows);
+      alert(
+        "✅ Imported " +
+          dataRows.length +
+          " accounts and pages have been prepared successfully!",
+      );
+    } else {
+      alert("⚠️ The file is empty or does not contain any data.");
+    }
+  };
+  reader.readAsArrayBuffer(file);
 });
